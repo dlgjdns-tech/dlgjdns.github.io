@@ -985,6 +985,47 @@
 }
 .qa-body p{ margin: 10px 0 0; }
 .qa-body p:first-child{ margin-top: 0; }
+    /* FAQ를 가로로 2열 배치 */
+.counselor-faq{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* 모바일에서는 다시 1열 */
+@media (max-width: 768px){
+  .counselor-faq{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 제목은 전체 폭 사용 */
+.counselor-faq .faq-title{
+  grid-column: 1 / -1;
+}
+
+/* 질문 박스 스타일 개선 */
+.qa{
+  width: 100%;
+  border-radius: 16px;
+  padding: 0;
+}
+
+/* 질문 줄 정렬 */
+.qa summary{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* + 버튼 위치 고정 */
+.qa summary::after{
+  flex-shrink: 0;
+  margin-left: 10px;
+}
   </style>
 </head>
 
@@ -1523,6 +1564,7 @@
 
 </body>
 </html>
+
 
 
 
