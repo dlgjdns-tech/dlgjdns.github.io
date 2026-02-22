@@ -858,6 +858,133 @@
   color: rgba(16,24,16,.6);
   margin-bottom: 12px;
 }
+    /* ===== Counselors (no photo) + FAQ accordion ===== */
+.counselor-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 980px){
+  .counselor-grid{ grid-template-columns: 1fr; }
+}
+
+.counselor-card{
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(47,109,87,.14);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .06);
+  padding: 20px 20px 18px;
+}
+
+.counselor-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(47,109,87,.12);
+  margin-bottom: 14px;
+}
+
+.counselor-name{
+  margin: 0 0 6px;
+  font-family: "Noto Serif KR", serif;
+  letter-spacing: -.4px;
+  font-size: 22px;
+}
+.counselor-role{
+  color: rgba(16,24,16,.62);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(47,109,87,.10);
+  border: 1px solid rgba(47,109,87,.14);
+  color: rgba(47,109,87,.95);
+  font-weight: 900;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.counselor-about{
+  margin-top: 2px;
+}
+.about-title{
+  font-weight: 900;
+  letter-spacing: -.2px;
+  margin: 0 0 8px;
+}
+.about-text{
+  margin: 0 0 10px;
+  color: rgba(16,24,16,.70);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.about-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(16,24,16,.68);
+  font-size: 14px;
+  display:grid;
+  gap: 8px;
+}
+
+.counselor-faq{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(47,109,87,.12);
+}
+.faq-title{
+  font-weight: 900;
+  margin: 0 0 10px;
+  letter-spacing: -.2px;
+}
+
+/* Accordion using details/summary */
+.qa{
+  border: 1px solid rgba(47,109,87,.14);
+  background: rgba(245,244,240,.55);
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.qa summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 14px;
+  font-weight: 900;
+  color: rgba(16,24,16,.82);
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.qa summary::-webkit-details-marker{ display:none; }
+
+.qa summary::after{
+  content:"＋";
+  margin-left:auto;
+  font-weight: 900;
+  color: rgba(47,109,87,.9);
+}
+.qa[open] summary::after{
+  content:"－";
+}
+
+.qa-body{
+  padding: 0 14px 14px;
+  color: rgba(16,24,16,.72);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.qa-body p{ margin: 10px 0 0; }
+.qa-body p:first-child{ margin-top: 0; }
   </style>
 </head>
 
@@ -1035,7 +1162,6 @@
     </div>
   </section>
 
-  <!-- Counselor -->
 <!-- Counselor -->
 <section id="counselor" class="anchor">
   <div class="container">
@@ -1043,82 +1169,135 @@
       <div class="eyebrow">COUNSELOR</div>
       <h2 class="title">상담사 소개</h2>
       <div class="title-underline"></div>
+      <p class="sub">상담사별로 자주 받는 질문과 답변을 확인할 수 있습니다.</p>
     </div>
 
     <div class="counselor-grid">
 
       <!-- 상담사 1 -->
-      <div class="counselor-card">
-        <div class="portrait">
-          <div class="avatar">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/>
-              <path d="M4 22a8 8 0 0 1 16 0"/>
-            </svg>
+      <article class="counselor-card">
+        <header class="counselor-top">
+          <div>
+            <h3 class="counselor-name">홍길동 상담사</h3>
+            <div class="counselor-role">임상심리사 / 수석 상담사</div>
           </div>
-          <small>사진 준비 중</small>
-        </div>
+          <span class="pill">개인 · 불안 · 우울</span>
+        </header>
 
-        <div class="profile">
-          <h3>홍길동 상담사</h3>
-          <div class="role">임상심리사 / 수석 상담사</div>
-
-          <p>
-            내담자의 문제를 ‘결과’가 아닌 ‘원인’에서 바라보며,
-            실제 삶에서 변화가 일어나는 상담을 지향합니다.
+        <div class="counselor-about">
+          <div class="about-title">이런 상담사</div>
+          <p class="about-text">
+            문제를 ‘증상’이 아니라 ‘패턴’으로 보고, 원인을 정리한 뒤
+            현실에서 실행 가능한 선택지로 연결하는 상담을 지향합니다.
           </p>
 
-          <div class="bullets-title">학력 및 자격</div>
-          <ul class="bullets">
-            <li>OO대학교 심리학과 졸업</li>
-            <li>OO대학교 대학원 상담심리학 석사</li>
-            <li>임상심리사 2급</li>
+          <ul class="about-list">
+            <li>막연한 불안이 “왜 반복되는지” 구조를 함께 정리합니다.</li>
+            <li>생각이 많아 멈추는 유형에게 “다음 한 걸음”을 설계합니다.</li>
+            <li>말로만 위로하지 않고, 삶에서 적용 가능한 방식으로 안내합니다.</li>
           </ul>
-
-          <div class="bullets-title">전문 분야</div>
-          <div class="chips">
-            <span class="chip">불안·우울</span>
-            <span class="chip">대인관계</span>
-            <span class="chip">자존감</span>
-          </div>
         </div>
-      </div>
+
+        <div class="counselor-faq">
+          <div class="faq-title">자주 받는 질문</div>
+
+          <details class="qa">
+            <summary>Q. 병원은 가기 싫은데 상담이 필요한 건가요?</summary>
+            <div class="qa-body">
+              <p>
+                병원을 고려한다는 건 이미 불편함이 있다는 뜻일 가능성이 큽니다.
+                그렇다면 ‘병원 vs 상담’이 아니라, 먼저 어떤 불편함인지 확인하고
+                그 불편함을 줄이는 방법을 찾는 게 우선이에요.
+              </p>
+              <p>
+                상담은 진단을 내리기보다, 현재 어려움을 정리하고 변화를 만들기 위한 선택지가 될 수 있습니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>Q. 상담을 받으면 뭐가 달라지나요?</summary>
+            <div class="qa-body">
+              <p>
+                “마음이 편해진다”만이 목표가 아닙니다. 반복되는 생각/행동의 고리를 파악하고,
+                내가 선택할 수 있는 범위를 늘리는 게 핵심이에요.
+                보통은 관계·습관·기준·회복 루틴이 함께 정리됩니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>Q. 말로 설명을 잘 못하는데도 가능할까요?</summary>
+            <div class="qa-body">
+              <p>
+                가능합니다. 말이 정리가 안 되는 건 흔한 상태입니다.
+                질문을 통해 ‘상황-감정-생각-행동’을 순서대로 정리하면서
+                자연스럽게 구조가 만들어지게 도와드려요.
+              </p>
+            </div>
+          </details>
+        </div>
+      </article>
 
       <!-- 상담사 2 -->
-      <div class="counselor-card">
-        <div class="portrait">
-          <div class="avatar">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/>
-              <path d="M4 22a8 8 0 0 1 16 0"/>
-            </svg>
+      <article class="counselor-card">
+        <header class="counselor-top">
+          <div>
+            <h3 class="counselor-name">김민지 상담사</h3>
+            <div class="counselor-role">상담심리사 / 가족·관계 상담</div>
           </div>
-          <small>사진 준비 중</small>
-        </div>
+          <span class="pill">가족 · 관계 · 청소년</span>
+        </header>
 
-        <div class="profile">
-          <h3>김민지 상담사</h3>
-          <div class="role">상담심리사 / 가족상담 전문가</div>
-
-          <p>
-            관계 속에서 반복되는 패턴을 함께 탐색하며,
-            안정적인 방향을 찾아가는 과정을 중요하게 생각합니다.
+        <div class="counselor-about">
+          <div class="about-title">이런 상담사</div>
+          <p class="about-text">
+            관계에서 반복되는 갈등과 상처의 패턴을 다루며,
+            ‘내가 바꿀 수 있는 것’과 ‘내가 내려놓아야 하는 것’을 구분하는 데 집중합니다.
           </p>
 
-          <div class="bullets-title">학력 및 자격</div>
-          <ul class="bullets">
-            <li>OO대학교 상담심리학과 졸업</li>
-            <li>청소년상담사 2급</li>
+          <ul class="about-list">
+            <li>가족/연인/직장 관계에서 갈등이 반복되는 이유를 찾습니다.</li>
+            <li>경계(boundary) 설정과 대화 방식의 현실적인 수정안을 제시합니다.</li>
+            <li>청소년의 정서·학업·관계 부담을 함께 정리합니다.</li>
           </ul>
-
-          <div class="bullets-title">전문 분야</div>
-          <div class="chips">
-            <span class="chip">가족상담</span>
-            <span class="chip">청소년</span>
-            <span class="chip">관계문제</span>
-          </div>
         </div>
-      </div>
+
+        <div class="counselor-faq">
+          <div class="faq-title">자주 받는 질문</div>
+
+          <details class="qa">
+            <summary>Q. 가족이 상담을 거부해요. 저 혼자 와도 의미가 있나요?</summary>
+            <div class="qa-body">
+              <p>
+                의미 있습니다. 가족상담은 ‘가족 모두가 와야만’ 시작되는 게 아닙니다.
+                우선 내 반응 패턴과 경계를 정리하면, 관계의 흐름이 달라지는 경우가 많아요.
+              </p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>Q. 상대가 바뀌지 않으면 관계는 결국 끝 아닌가요?</summary>
+            <div class="qa-body">
+              <p>
+                관계는 “상대가 바뀌어야만” 유지되는 구조가 아니에요.
+                내가 반복하는 선택을 바꾸면 관계의 규칙이 바뀌고,
+                그에 따라 지속/거리두기/정리 등 현실적인 결정을 더 명확하게 할 수 있습니다.
+              </p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>Q. 아이가 말이 없고 방에만 있어요. 어떻게 해야 하나요?</summary>
+            <div class="qa-body">
+              <p>
+                ‘대화 시도’보다 먼저 안전감을 회복하는 접근이 필요할 때가 많습니다.
+                압박 없이 연결을 만드는 방식, 부모의 반응 패턴, 생활 리듬을 함께 점검해볼 수 있어요.
+              </p>
+            </div>
+          </details>
+        </div>
+      </article>
 
     </div>
   </div>
@@ -1344,6 +1523,7 @@
 
 </body>
 </html>
+
 
 
 
