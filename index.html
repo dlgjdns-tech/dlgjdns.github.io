@@ -3,783 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>새순 심리상담 연구소</title>
-  <meta name="description" content="개인상담 · 가족상담 · 청소년상담. 예약제 운영." />
+  <title>새순 심리상담 연구소 | 상처 난 자리에도 새롭게 돋아나는 생명</title>
+  <meta name="description" content="상처 난 자리에도 새롭게 돋아나는 생명. 청소년, 청년, 성인, 노년기 심리상담 전문." />
   <meta name="theme-color" content="#2F6D57" />
 
-  <!-- Fonts (무료) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      /* 오프화이트 + 세이지/딥그린 */
-      --bg:#F6F5EF;
-      --card:#FFFFFF;
-      --muted:#6B7280;
-      --text:#0F172A;
-      --line:#E7E5DC;
-
-      --green:#2F6D57;
-      --green-2:#3E7C64;
-      --sage:#DDE9E1;
-      --sage-2:#EAF2ED;
-
-      --shadow: 0 18px 45px rgba(15, 23, 42, .07);
-      --shadow-soft: 0 12px 26px rgba(15, 23, 42, .06);
-
-      --radius: 22px;
-      --radius-lg: 28px;
-
-      --max: 1200px;
-      --pad: clamp(16px, 3vw, 28px);
+    :root {
+      --bg: #F8F7F2;
+      --card: #FFFFFF;
+      --muted: #64748B;
+      --text: #1E293B;
+      --line: #E2E8F0;
+      --green: #2F6D57;
+      --green-light: #41836A;
+      --sage: #EAF2ED;
+      --radius: 24px;
+      --max: 1100px;
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.65;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
     }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
-    .container{ max-width:var(--max); margin:0 auto; padding: 0 var(--pad); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-    /* ===== Top Nav ===== */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(246,245,239,.86);
+    /* ===== Navigation ===== */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248, 247, 242, 0.9);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(47, 109, 87, 0.1);
     }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px var(--pad);
-      max-width:var(--max); margin:0 auto;
-      gap: 14px;
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
     }
-
-    .logo{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800;
-      letter-spacing:-.3px;
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: "Noto Serif KR", serif;
+      font-weight: 700; font-size: 20px; color: var(--green);
     }
-    .logo span{
-      font-size: 15px;
-      white-space:nowrap;
+    .logo img { width: 28px; height: 28px; object-fit: contain; }
+    .nav { display: flex; gap: 24px; font-weight: 500; font-size: 15px; }
+    .nav a:hover { color: var(--green); }
+    .nav .cta {
+      color: var(--green); border: 1.5px solid var(--green);
+      padding: 6px 16px; border-radius: 99px; transition: 0.2s;
     }
-    .logo-img{
-      height: 34px;
-      width: auto;
-      display: block;
-    }
-
-    .nav{
-      display:flex; align-items:center; gap: 20px;
-      color: #4B5563;
-      font-weight:600;
-      font-size:14px;
-    }
-    .nav a:hover{ color: var(--text); }
-    .nav .cta{
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: var(--green);
-      color:#fff;
-      box-shadow: 0 12px 22px rgba(47,109,87,.20);
-    }
-    .nav .cta:hover{ background: var(--green-2); }
-
-    .hamburger{ display:none; }
-    @media (max-width: 860px){
-      .nav{ display:none; }
-      .hamburger{
-        display:inline-flex; align-items:center; justify-content:center;
-        width:42px; height:42px; border-radius: 999px;
-        border:1px solid var(--line);
-        background: rgba(255,255,255,.7);
-      }
-    }
-
-    /* ===== Sections common ===== */
-    section{ padding: clamp(48px, 7vw, 86px) 0; }
-    .section-head{
-      text-align:center;
-      margin-bottom: clamp(26px, 4vw, 44px);
-    }
-    .eyebrow{
-      display:inline-block;
-      font-size: 14px;
-      letter-spacing:.12em;
-      color: var(--green);
-      font-weight:700;
-      margin-bottom: 10px;
-    }
-    .title{
-      font-family:"Noto Serif KR", serif;
-      font-weight:700;
-      letter-spacing:-.6px;
-      line-height:1.18;
-      margin:0;
-      font-size: clamp(26px, 4vw, 44px);
-    }
-    .title-underline{
-      width: 42px; height: 3px;
-      margin: 18px auto 0;
-      background: var(--green);
-      border-radius: 999px;
-      opacity:.9;
-    }
-    .sub{
-      max-width: 72ch;
-      margin: 14px auto 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* 보조 클래스(질문 섹션에서 사용) */
-    .section-title{
-      font-family:"Noto Serif KR", serif;
-      font-weight:700;
-      letter-spacing:-.6px;
-      line-height:1.18;
-      margin:0;
-      font-size: clamp(26px, 4vw, 44px);
-    }
-    .section-desc{
-      max-width: 72ch;
-      margin: 14px auto 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .nav .cta:hover { background: var(--green); color: #fff; }
 
     /* ===== Hero ===== */
-    .hero{ padding: 0; position:relative; }
-    .hero-wrap{ max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
-    .hero-card{
-      border-radius: var(--radius-lg);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-      background: #000;
-      position:relative;
-      min-height: clamp(420px, 52vw, 620px);
+    .hero { padding: 40px 0; }
+    .hero-card {
+      position: relative; border-radius: 40px; overflow: hidden;
+      min-height: 600px; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./image/bg.png') center/cover;
     }
+    .hero-content { z-index: 2; padding: 0 20px; }
+    .hero-kicker { font-weight: 500; letter-spacing: 3px; margin-bottom: 20px; opacity: 0.9; }
+    .hero-title {
+      font-family: "Noto Serif KR", serif; font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.2; margin-bottom: 24px;
+    }
+    .hero-line { font-size: clamp(16px, 2.5vw, 22px); opacity: 0.95; margin-bottom: 36px; font-weight: 300; }
+    .btn-wrap { display: flex; gap: 14px; justify-content: center; }
+    .btn { padding: 16px 32px; border-radius: 99px; font-weight: 700; transition: 0.3s; display: inline-block; cursor: pointer; border: none; font-family: inherit; }
+    .btn.primary { background: #fff; color: var(--green); }
+    .btn.outline { border: 1px solid rgba(255,255,255,0.6); color: #fff; backdrop-filter: blur(8px); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(0deg, rgba(10,18,16,.3), rgba(10,18,16,.3)),
-        radial-gradient(900px 500px at 70% 35%, rgba(47,109,87,.25), transparent 60%),
-        url("./image/bg.png");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(.95);
-      transform: scale(1.02);
-    }
+    /* ===== Section Basics ===== */
+    section { padding: 100px 0; }
+    .section-head { text-align: center; margin-bottom: 60px; }
+    .eyebrow { color: var(--green); font-weight: 700; font-size: 14px; letter-spacing: 3px; margin-bottom: 12px; display: block; }
+    .title { font-family: "Noto Serif KR", serif; font-size: clamp(30px, 4vw, 40px); line-height: 1.4; margin: 0; font-weight: 600; }
+    .sub { color: var(--muted); margin-top: 18px; max-width: 720px; margin-left: auto; margin-right: auto; font-size: 17px; }
 
-    .hero-content{
-      position:absolute; inset:0;
-      display:flex; align-items:center; justify-content:center;
-      text-align:center;
-      padding: clamp(20px, 5vw, 44px);
-      color:#fff;
+    /* ===== 1. Growth Journey (Philosophy) ===== */
+    .journey-container { margin-top: 40px; }
+    .journey { display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; gap: 0; }
+    
+    .journey-step {
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+      width: 260px; opacity: 0; transform: translateY(20px);
+      animation: journeyFadeUp 0.8s ease forwards;
     }
-    .hero-kicker{
-      font-weight:700;
-      opacity:.92;
-      letter-spacing:-.2px;
-      margin-bottom: 12px;
-    }
-    .hero-title{
-      font-family:"Noto Serif KR", serif;
-      font-weight:700;
-      letter-spacing:-.8px;
-      margin: 0 0 14px;
-      font-size: clamp(34px, 6vw, 70px);
-      text-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .hero-line{
-      font-size: clamp(14px, 1.8vw, 18px);
-      opacity:.92;
-      margin: 0 0 22px;
-    }
-    .hero-actions{
-      display:flex; gap: 12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight:700;
-      border: 1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.14);
-      color:#fff;
-      backdrop-filter: blur(6px);
-      transition: transform .08s ease, background .2s ease;
-    }
-    .btn:hover{ background: rgba(255,255,255,.2); }
-    .btn:active{ transform: translateY(1px); }
-    .btn.primary{
-      background:#fff;
-      color: var(--green);
-      border-color:#fff;
-    }
-    .btn.primary:hover{ background: rgba(255,255,255,.92); }
+    .journey-step:nth-child(1) { animation-delay: 0.1s; }
+    .journey-step:nth-child(3) { animation-delay: 0.4s; }
+    .journey-step:nth-child(5) { animation-delay: 0.7s; }
 
-    /* ===== Promise cards (3) ===== */
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    @media (max-width: 980px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
-    .promise-card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow:hidden;
-      box-shadow: var(--shadow-soft);
-    }
-    .promise-media{
-      height: 210px;
-      position:relative;
-      background:
-        linear-gradient(0deg, rgba(15,23,42,.25), rgba(15,23,42,.15)),
-        url("https://images.unsplash.com/photo-1520975958225-72d7c6d0dcd2?auto=format&fit=crop&w=1400&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-    .promise-card:nth-child(2) .promise-media{
-      background:
-        linear-gradient(0deg, rgba(15,23,42,.18), rgba(15,23,42,.10)),
-        url("https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=1400&q=70");
-      background-size: cover;
-      background-position: center;
-    }
-    .promise-card:nth-child(3) .promise-media{
-      background:
-        linear-gradient(0deg, rgba(15,23,42,.18), rgba(15,23,42,.10)),
-        url("https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1400&q=70");
-      background-size: cover;
-      background-position: center;
-    }
+    @keyframes journeyFadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .promise-no{
-      position:absolute; left:16px; top:14px;
-      font-family:"Noto Serif KR", serif;
-      font-size: 26px;
-      font-weight:700;
-      color: rgba(255,255,255,.55);
+    .circle-wrap { position: relative; width: 154px; height: 154px; cursor: pointer; }
+    .arc-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid transparent; border-top-color: var(--green);
+      border-right-color: var(--green); border-bottom-color: var(--green);
+      animation: spin 14s linear infinite; transition: 0.3s;
     }
-    .promise-body{ padding: 18px 18px 20px; }
-    .promise-quote{
-      color: var(--green);
-      font-weight:700;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-    .promise-title{
-      font-family:"Noto Serif KR", serif;
-      font-weight:700;
-      letter-spacing:-.4px;
-      font-size: 22px;
-      margin: 0 0 10px;
-    }
-    .promise-text{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .circle-wrap:hover .arc-ring { border-top-color: var(--green-light); border-right-color: var(--green-light); animation-duration: 5s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ===== Services ===== */
-    .service-card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 26px 24px;
-      box-shadow: var(--shadow-soft);
-      min-height: 220px;
+    .circle-bg {
+      position: absolute; inset: 12px; border-radius: 50%;
+      background: #f7f9f7; border: 1px solid #cde0ce;
+      display: flex; align-items: center; justify-content: center; transition: 0.3s;
     }
-    .icon-badge{
-      width:56px; height:56px;
-      border-radius: 16px;
-      background: var(--sage);
-      display:grid; place-items:center;
-      margin-bottom: 18px;
-    }
-    .icon-badge svg{ width:26px; height:26px; stroke: var(--green); fill:none; stroke-width:2; }
-    .service-en{
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.12em;
-      color:#94A3B8;
-      margin-bottom: 6px;
-    }
-    .service-title{
-      font-family:"Noto Serif KR", serif;
-      font-weight:700;
-      font-size:22px;
-      margin:0 0 10px;
-    }
-    .service-text{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .circle-wrap:hover .circle-bg { background: #f0f7f0; border-color: var(--green); transform: scale(1.02); }
 
-    /* ===== Counselors (2 cards) + FAQ accordion ===== */
-    .counselor-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+    .journey-label { text-align: center; padding: 0 15px; }
+    .label-ko-sm { display: block; font-weight: 500; font-size: 20px; color: var(--text); margin-bottom: 4px; }
+    .label-en-sm {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 15px;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); margin-bottom: 14px; display: block;
     }
-    @media (max-width: 980px){
-      .counselor-grid{ grid-template-columns: 1fr; }
-    }
+    .journey-desc { font-size: 14.5px; line-height: 1.6; color: var(--muted); font-weight: 300; word-break: keep-all; }
 
-    .counselor-card{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(47,109,87,.14);
-      border-radius: 22px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, .06);
-      padding: 20px 20px 18px;
-      text-align: left;
-    }
+    .connector { display: flex; align-items: center; gap: 6px; padding: 0 10px; margin-top: 77px; opacity: 0; animation: fadeIn 0.5s ease 0.6s forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .dot { width: 4px; height: 4px; border-radius: 50%; background: #cde0ce; animation: blink 2.5s ease-in-out infinite; }
+    .line-sm { width: 30px; height: 1px; background: #cde0ce; }
+    @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; background: var(--green); } }
 
-    .counselor-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap: 12px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(47,109,87,.12);
-      margin-bottom: 14px;
+    /* ===== 2. Director's Message ===== */
+    .message-box { background: var(--sage); padding: 80px 60px; border-radius: 48px; position: relative; overflow: hidden; }
+    .message-box::before {
+      content: '"'; position: absolute; top: 40px; left: 40px; 
+      font-family: 'Cormorant Garamond', serif; font-size: 120px; color: var(--green); opacity: 0.1; line-height: 1;
     }
+    .message-text { font-size: 18px; line-height: 2; color: #445566; font-weight: 400; }
 
-    .counselor-name{
-      margin: 0 0 6px;
-      font-family: "Noto Serif KR", serif;
-      letter-spacing: -.4px;
-      font-size: 22px;
+    /* ===== 3. Counselors (Accordion) ===== */
+    .counselor-card {
+      display: grid; grid-template-columns: 320px 1fr; gap: 50px; padding: 50px;
+      background: #fff; border-radius: 32px; border: 1px solid var(--line); margin-bottom: 40px; transition: 0.3s;
     }
-    .counselor-role{
-      color: rgba(16,24,16,.62);
-      font-weight: 700;
-      font-size: 13px;
+    .counselor-card:hover { border-color: var(--green-light); box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
+    .counselor-name { font-family: "Noto Serif KR", serif; font-size: 28px; margin: 0 0 5px 0; }
+    .counselor-role { color: var(--green); font-weight: 600; font-size: 15px; display: block; margin-bottom: 20px; }
+    .tag { background: var(--sage); color: var(--green); font-size: 13px; padding: 5px 14px; border-radius: 99px; margin-right: 6px; font-weight: 500; }
+    
+    .qna-item { border-bottom: 1px solid var(--line); }
+    .qna-item:last-child { border-bottom: none; }
+    .qna-btn {
+      width: 100%; text-align: left; padding: 22px 0; background: none; border: none;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      font-size: 17px; font-weight: 500; color: var(--text); font-family: inherit;
     }
+    .qna-btn::after { content: '+'; color: var(--green); font-size: 22px; transition: 0.3s; }
+    .qna-item.active .qna-btn::after { transform: rotate(45deg); }
+    .qna-content { 
+        max-height: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--muted); font-size: 16px; line-height: 1.8;
+    }
+    .qna-item.active .qna-content { max-height: 300px; padding-bottom: 25px; }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(47,109,87,.10);
-      border: 1px solid rgba(47,109,87,.14);
-      color: rgba(47,109,87,.95);
-      font-weight: 900;
-      font-size: 12px;
-      white-space: nowrap;
-      flex: 0 0 auto;
+    /* ===== 4. Our Promise (Revised Design) ===== */
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+    .promise-card {
+      background: #fff; border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--line); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex; flex-direction: column;
     }
+    .promise-img { width: 100%; height: 220px; background-size: cover; background-position: center; transition: 0.5s; }
+    .p-img-1 { background-image: url('https://images.unsplash.com/photo-1516733968668-dbdce39c46ef?auto=format&fit=crop&q=80&w=600'); }
+    .p-img-2 { background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=600'); }
+    .p-img-3 { background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600'); }
+    
+    .promise-content { padding: 35px; position: relative; flex-grow: 1; }
+    .promise-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--green);
+      opacity: 0.12; position: absolute; top: 10px; right: 25px; font-weight: 700;
+    }
+    .promise-content h4 { font-family: "Noto Serif KR", serif; font-size: 22px; color: var(--green); margin-bottom: 18px; }
+    .promise-content p { font-size: 15.5px; color: var(--muted); line-height: 1.8; word-break: keep-all; font-weight: 300; }
+    .promise-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(47, 109, 87, 0.15); border-color: var(--green); }
+    .promise-card:hover .promise-img { transform: scale(1.05); }
 
-    .counselor-about{ margin-top: 2px; }
-    .about-title{
-      font-weight: 900;
-      letter-spacing: -.2px;
-      margin: 0 0 8px;
+    /* ===== 5. Free Q&A Form ===== */
+    .notice-box {
+      background: rgba(47, 109, 87, 0.04); border-radius: 20px;
+      padding: 30px; margin-bottom: 35px; text-align: left;
+      font-size: 15px; color: #445544; border: 1px solid rgba(47, 109, 87, 0.1);
     }
-    .about-text{
-      margin: 0 0 10px;
-      color: rgba(16,24,16,.70);
-      font-size: 14px;
-      line-height: 1.65;
-      text-align: left;
+    .notice-box ul { padding-left: 20px; margin-top: 15px; }
+    .notice-box li { margin-bottom: 8px; opacity: 0.8; }
+    input, textarea {
+      width: 100%; padding: 18px; border-radius: 14px; border: 1px solid var(--line);
+      outline: none; margin-bottom: 18px; font-family: inherit; font-size: 16px; background: #fff;
     }
-    .about-list{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(16,24,16,.68);
-      font-size: 14px;
-      display:grid;
-      gap: 8px;
-      text-align: left;
-    }
+    input:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(47, 109, 87, 0.06); }
+    textarea { height: 180px; resize: none; }
 
-    /* ✅ FAQ */
-    .counselor-faq{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(47,109,87,.12);
-      display: block;
+    footer { padding: 80px 0; text-align: center; color: var(--muted); font-size: 15px; background: #fff; border-top: 1px solid var(--line); }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .journey { flex-direction: column; gap: 50px; }
+      .connector { display: none; }
+      .journey-step { width: 100%; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .counselor-card { grid-template-columns: 1fr; padding: 35px; }
+      .message-box { padding: 50px 30px; }
+      .nav { display: none; }
     }
-    .counselor-faq .faq-title{
-      font-weight: 900;
-      margin: 0 0 12px;
-      letter-spacing: -.2px;
-    }
-
-    .qa{
-      width: 100%;
-      border: 1px solid rgba(47,109,87,.14);
-      background: rgba(245,244,240,.55);
-      border-radius: 18px;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .qa summary{
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-      gap: 12px;
-      font-weight: 900;
-      color: rgba(16,24,16,.86);
-      line-height: 1.55;
-    }
-    .qa summary::-webkit-details-marker{ display:none; }
-
-    .qa summary span.qtext{
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-
-    .qa summary::after{
-      content:"＋";
-      flex: 0 0 auto;
-      width: 26px;
-      height: 26px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      border: 1px solid rgba(47,109,87,.18);
-      background: rgba(255,255,255,.55);
-      color: rgba(47,109,87,.95);
-      font-weight: 900;
-    }
-    .qa[open] summary::after{ content:"－"; }
-
-    .qa-body{
-      padding: 0 16px 16px;
-      color: rgba(16,24,16,.72);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-    .qa-body p{ margin: 10px 0 0; }
-    .qa-body p:first-child{ margin-top: 0; }
-
-    /* ===== Reviews ===== */
-    .review-card{
-      background: var(--sage-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px 22px;
-      box-shadow: var(--shadow-soft);
-      min-height: 240px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .quote{
-      font-size: 16px;
-      color: #0f172a;
-      font-weight:600;
-      margin:0 0 18px;
-    }
-    .review-meta{
-      display:flex; align-items:center; gap: 12px;
-      margin-top: 10px;
-    }
-    .review-badge{
-      width:38px; height:38px;
-      border-radius: 999px;
-      background: rgba(47,109,87,.16);
-      display:grid; place-items:center;
-      color: var(--green);
-      font-weight:900;
-      border: 1px solid rgba(47,109,87,.18);
-    }
-    .review-who{
-      font-weight:900;
-      line-height:1.2;
-    }
-    .review-what{
-      color:#64748B;
-      font-size: 13px;
-      font-weight:700;
-    }
-
-    /* anchor offset */
-    .anchor{ scroll-margin-top: 84px; }
-
-    /* 모바일 메뉴 */
-    .mobile-nav{
-      display:none;
-      border-top: 1px solid var(--line);
-      padding: 10px var(--pad) 14px;
-      max-width:var(--max); margin:0 auto;
-      gap: 10px;
-    }
-    .mobile-nav a{
-      display:inline-flex;
-      padding: 10px 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.7);
-      border-radius: 999px;
-      font-weight:800;
-      color:#475569;
-      font-size: 13px;
-    }
-    .mobile-nav a.cta{
-      background: var(--green);
-      color:#fff;
-      border-color: var(--green);
-    }
-    .mobile-nav.show{ display:flex; flex-wrap:wrap; }
-
-    /* ===== Question section polish ===== */
-    .section.contact{
-      background: linear-gradient(180deg, rgba(245,244,240,.7), rgba(245,244,240,.35));
-    }
-
-    #question .section-head{ text-align:center; margin-bottom: 28px; }
-    #question .section-desc{
-      max-width: 760px;
-      margin: 10px auto 0;
-      line-height: 1.7;
-    }
-
-    #question .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-    @media (max-width: 980px){
-      #question .contact-grid{ grid-template-columns: 1fr; }
-    }
-
-    #question .card{
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(47,109,87,.14);
-      box-shadow:
-        0 10px 28px rgba(16, 24, 16, .08),
-        0 1px 0 rgba(255,255,255,.7) inset;
-      border-radius: 22px;
-      overflow:hidden;
-      position: relative;
-    }
-
-    #question .card::before{
-      content:"";
-      position:absolute;
-      left:0; top:0; right:0;
-      height: 8px;
-      background: linear-gradient(90deg, rgba(47,109,87,.45), rgba(47,109,87,.08));
-    }
-
-    #question .contact-info,
-    #question .contact-form{
-      padding: 22px 22px 20px;
-    }
-
-    #question .card-title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin: 6px 0 14px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
-    #question .card-title .badge{
-      width: 38px; height: 38px;
-      border-radius: 14px;
-      background: rgba(47,109,87,.12);
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(47,109,87,.14);
-      color: var(--green);
-    }
-    #question .card-title .badge svg{
-      width: 18px; height: 18px;
-      opacity:.95;
-    }
-
-    #question .info-list{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-    }
-    #question .info-list li{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap: 12px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(245, 244, 240, .55);
-      border: 1px solid rgba(47,109,87,.08);
-    }
-    @media (max-width: 520px){
-      #question .info-list li{ grid-template-columns: 1fr; }
-    }
-    #question .info-label{
-      font-weight: 700;
-      color: rgba(16,24,16,.78);
-    }
-    #question .info-value{
-      color: rgba(16,24,16,.72);
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
-    #question .note{
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(47,109,87,.10);
-      border: 1px dashed rgba(47,109,87,.25);
-      color: rgba(16,24,16,.78);
-    }
-
-    #question .field{
-      display:block;
-      margin: 12px 0;
-    }
-    #question .field-label{
-      display:block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: rgba(16,24,16,.78);
-    }
-    #question input,
-    #question textarea{
-      width:100%;
-      border-radius: 16px;
-      border: 1px solid rgba(47,109,87,.18);
-      background: rgba(255,255,255,.86);
-      padding: 13px 14px;
-      outline: none;
-      font-size: 15px;
-      line-height: 1.4;
-      transition: box-shadow .18s ease, border-color .18s ease;
-      font-family: inherit;
-    }
-    #question textarea{ resize: vertical; min-height: 160px; }
-
-    #question input:focus,
-    #question textarea:focus{
-      border-color: rgba(47,109,87,.45);
-      box-shadow: 0 0 0 4px rgba(47,109,87,.14);
-      background: #fff;
-    }
-
-    #question .helper{
-      margin-top: 10px;
-      font-size: 13px;
-      color: rgba(16,24,16,.62);
-      line-height: 1.6;
-      font-weight: 700;
-    }
-
-    #question .form-actions{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      margin-top: 14px;
-      flex-wrap: wrap;
-    }
-
-    #question .mini-cta{
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(245, 244, 240, .65);
-      border: 1px solid rgba(47,109,87,.10);
-      color: rgba(16,24,16,.72);
-      font-size: 13px;
-      line-height: 1.6;
-      font-weight: 700;
-    }
-
-    /* footer */
-    footer{
-      padding: 28px 0 40px;
-      color:#64748B;
-      font-size: 12px;
-      text-align:center;
-      border-top: 1px solid var(--line);
-    }
-    footer a{ text-decoration: underline; text-decoration-style: dashed; }
+    .anchor { scroll-margin-top: 100px; }
   </style>
 </head>
 
 <body>
 
-  <!-- Topbar -->
   <header class="topbar">
-    <div class="topbar-inner">
-      <a class="logo" href="#home" aria-label="홈으로">
-        <img class="logo-img" src="./image/logo.png" alt="새순 심리상담 연구소 로고" />
-        <span>새순 심리상담 연구소</span>
+    <div class="container topbar-inner">
+      <a href="#" class="logo">
+        <img src="./image/logo.png" alt="새순 심리상담 연구소 로고" />
+        새순 심리상담 연구소
       </a>
-
-      <nav class="nav" aria-label="상단 메뉴">
-        <a href="#home">홈</a>
-        <a href="#apply">연구소 소개</a>
-        <a href="#reviews">상담 후기</a>
-        <a href="#counselor">상담사</a>
-        <a class="cta" href="#question">무료 질문하기</a>
+      <nav class="nav">
+        <a href="#about">철학과 여정</a>
+        <a href="#message">원장 인사말</a>
+        <a href="#counselors">전문가 소개</a>
+        <a href="#promise">3가지 약속</a>
+        <a href="#question" class="cta">무료 질문하기</a>
       </nav>
-
-      <button class="hamburger" id="hamburger" aria-label="모바일 메뉴 열기">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#home">홈</a>
-      <a href="#apply">연구소 소개</a>
-      <a href="#reviews">상담 후기</a>
-      <a href="#counselor">상담사</a>
-      <a class="cta" href="#question">무료 질문하기</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-wrap">
+  <section class="hero">
+    <div class="container">
       <div class="hero-card">
-        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
-          <div>
-            <div class="hero-kicker">청소년상담 · 개인상담 · 가족상담</div>
-            <h1 class="hero-title">새순<br/>심리상담 연구소</h1>
-            <p class="hero-line">당신의 노력이 부족한 게 아니라, 번지수가 틀렸던 겁니다.</p>
+          <div class="hero-kicker">AD ASPERA PER ASPERA</div>
+          <h1 class="hero-title">상처 난 자리에도 새롭게<br>돋아나는 생명, 새순</h1>
+          <p class="hero-line">우리는 변화를 강요하지 않습니다.<br>당신 안에 이미 존재하는 힘을 발견할 때까지 함께 걷습니다.</p>
+          <div class="btn-wrap">
+            <a href="#question" class="btn primary">무료 상담 질문하기</a>
+            <a href="#about" class="btn outline">연구소 철학 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="hero-actions">
-              <a class="btn primary" href="#question">무료로 질문하기</a>
-              <a class="btn" href="#apply">연구소 소개</a>
+  <section id="about" class="anchor">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">OUR VISION & JOURNEY</span>
+        <h2 class="title">변화의 흐름, 새순의 여정</h2>
+        <p class="sub">고통을 문제로만 보지 않고, 성장의 밑거름으로 다룹니다.<br>씨앗이 단단한 나무가 되듯 당신의 삶이 피어나기를 소망합니다.</p>
+      </div>
+      
+      <div class="journey-container">
+        <div class="journey">
+          <div class="journey-step">
+            <div class="circle-wrap">
+              <div class="arc-ring"></div>
+              <div class="circle-bg">
+                <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
+                  <rect x="8" y="8" width="94" height="48" fill="#eaf4f0"/>
+                  <rect x="8" y="56" width="94" height="46" rx="0" fill="#c4a882"/>
+                  <line x1="8" y1="56" x2="102" y2="56" stroke="#8c6640" stroke-width="2"/>
+                  <g transform="rotate(-25, 55, 77)">
+                    <path d="M55 63 C61 65 66 71 64 79 C62 86 59 91 55 91 C51 91 48 86 46 79 C44 71 49 65 55 63 Z" fill="#4a2a0a"/>
+                    <line x1="55" y1="66" x2="55" y2="89" stroke="#7a4a20" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="journey-label">
+              <span class="label-ko-sm">시작</span>
+              <span class="label-en-sm">Start</span>
+              <p class="journey-desc">내면의 깊은 곳, 변화의 가능성을 품은 소중한 씨앗을 함께 발견합니다.</p>
+            </div>
+          </div>
+
+          <div class="connector"><div class="line-sm"></div><div class="dot"></div><div class="dot"></div><div class="line-sm"></div></div>
+
+          <div class="journey-step">
+            <div class="circle-wrap">
+              <div class="arc-ring" style="animation-duration:18s; animation-direction:reverse;"></div>
+              <div class="circle-bg">
+                <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
+                  <rect x="8" y="8" width="94" height="66" fill="#eaf4f0"/>
+                  <rect x="8" y="74" width="94" height="28" fill="#c4a882"/>
+                  <line x1="8" y1="74" x2="102" y2="74" stroke="#8c6640" stroke-width="2"/>
+                  <line x1="55" y1="74" x2="55" y2="52" stroke="#2e6636" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M 55 58 C 44 62  26 56  22 44 C 18 34  28 24  38 28 C 48 32  55 46  55 58 Z" fill="#3a7d44"/>
+                  <path d="M 55 52 C 66 56  84 50  88 38 C 92 28  82 18  72 22 C 62 26  55 40  55 52 Z" fill="#4e9e5a"/>
+                </svg>
+              </div>
+            </div>
+            <div class="journey-label">
+              <span class="label-ko-sm">회복</span>
+              <span class="label-en-sm">Recovery</span>
+              <p class="journey-desc">상처를 딛고 올라와 자신만의 색으로 여린 새순을 조금씩 틔워냅니다.</p>
+            </div>
+          </div>
+
+          <div class="connector"><div class="line-sm"></div><div class="dot"></div><div class="dot"></div><div class="line-sm"></div></div>
+
+          <div class="journey-step">
+            <div class="circle-wrap">
+              <div class="arc-ring" style="animation-duration:10s;"></div>
+              <div class="circle-bg">
+                <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
+                  <rect x="8" y="8" width="94" height="82" fill="#eaf4f0"/>
+                  <rect x="8" y="90" width="94" height="12" fill="#c4a882"/>
+                  <line x1="8" y1="90" x2="102" y2="90" stroke="#8c6640" stroke-width="2"/>
+                  <rect x="48" y="68" width="14" height="24" rx="3" fill="#7a4a20"/>
+                  <ellipse cx="18" cy="46" rx="18" ry="16" fill="#2e6636"/><ellipse cx="92" cy="46" rx="18" ry="16" fill="#2e6636"/>
+                  <ellipse cx="32" cy="36" rx="20" ry="18" fill="#3a7d44"/><ellipse cx="78" cy="36" rx="20" ry="18" fill="#3a7d44"/>
+                  <ellipse cx="55" cy="56" rx="22" ry="16" fill="#3a7d44"/><ellipse cx="55" cy="32" rx="28" ry="24" fill="#3a7d44"/>
+                  <ellipse cx="55" cy="14" rx="12" ry="10" fill="#5cb86e"/>
+                </svg>
+              </div>
+            </div>
+            <div class="journey-label">
+              <span class="label-ko-sm">성장</span>
+              <span class="label-en-sm">Growth</span>
+              <p class="journey-desc">단단한 뿌리와 무성한 가지로 자신만의 온전한 삶을 일구어 나갑니다.</p>
             </div>
           </div>
         </div>
@@ -787,482 +340,175 @@
     </div>
   </section>
 
-  <!-- Promise -->
-  <section id="apply" class="anchor">
+  <section id="message" class="anchor" style="background-color: #fff;">
     <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">OUR PROMISE</div>
-        <h2 class="title">새순 심리상담 연구소만의<br/>3가지 약속</h2>
-        <div class="title-underline"></div>
-      </div>
-
-      <div class="grid3">
-        <article class="promise-card">
-          <div class="promise-media"><div class="promise-no">01</div></div>
-          <div class="promise-body">
-            <div class="promise-quote">‘왜 자꾸 반복될까?’</div>
-            <h3 class="promise-title">진짜 원인을 찾습니다</h3>
-            <p class="promise-text">
-              문제라고 믿는 것들은 종종 ‘결과’일 뿐입니다.<br>
-              반복되는 패턴의 원인을 함께 추적합니다.
-            </p>
-          </div>
-        </article>
-
-        <article class="promise-card">
-          <div class="promise-media"><div class="promise-no">02</div></div>
-          <div class="promise-body">
-            <div class="promise-quote">“좋은 말 대신 전략”</div>
-            <h3 class="promise-title">당신만을 위한 설계</h3>
-            <p class="promise-text">
-              위로만 남지 않게, 일상에서 바로 적용 가능한
-              현실적인 방향을 설계합니다.
-            </p>
-          </div>
-        </article>
-
-        <article class="promise-card">
-          <div class="promise-media"><div class="promise-no">03</div></div>
-          <div class="promise-body">
-            <div class="promise-quote">당신의 편에서</div>
-            <h3 class="promise-title">일단은 내 편, 그리고 동반자</h3>
-            <p class="promise-text">
-              옳고 그름을 가르는 재판관이 아니라,<br>
-              같은 방향을 보는 페이스메이커가 됩니다.
-            </p>
-          </div>
-        </article>
+      <div class="message-box">
+        <span class="eyebrow">DIRECTOR'S MESSAGE</span>
+        <h2 class="title" style="margin-bottom: 40px;">"지금 모습 그대로의 당신을<br>받아들이는 용기에서 치유는 시작됩니다"</h2>
+        <div class="message-text">
+          안녕하세요. 새순 심리상담 연구소입니다. 저는 상담을 누군가를 고치는 일이 아니라, 그가 잃어버렸던 자신과의 연결을 다시 회복하도록 돕는 과정이라고 믿습니다.<br><br>
+          "어떤 사람이 되어야 한다"는 세상의 기준에 맞추려 애쓰기보다, 있는 그대로의 아픔과 직면할 때 진정한 변화는 시작됩니다. 전문성과 따뜻함을 바탕으로 당신의 새순이 돋아나는 그날까지 함께하겠습니다.
+        </div>
+        <p style="margin-top: 40px; font-weight: 700; color: var(--green); font-size: 18px;">새순 심리상담연구소 원장 드림</p>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="anchor">
+  <section id="counselors" class="anchor">
     <div class="container">
       <div class="section-head">
-        <div class="eyebrow">SERVICES</div>
-        <h2 class="title">상담 서비스</h2>
-        <div class="title-underline"></div>
+        <span class="eyebrow">PROFESSIONALS</span>
+        <h2 class="title">함께 걷는 전문가</h2>
+        <p class="sub">풍부한 임상 경험과 따뜻한 공감을 가진 상담사들이 당신을 기다립니다.</p>
       </div>
 
-      <div class="grid3">
-        <article class="service-card">
-          <div class="icon-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M20 14a6 6 0 0 1-6 6H8l-4 3v-5a6 6 0 0 1-2-4V8a6 6 0 0 1 6-6h6a6 6 0 0 1 6 6v6Z"/>
-            </svg>
-          </div>
-          <div class="service-en">INDIVIDUAL</div>
-          <h3 class="service-title">개인상담</h3>
-          <p class="service-text">
-            불안, 우울, 자존감, 대인관계, 트라우마 등
-            개인이 겪는 심리적 어려움을 함께 탐색합니다.
-          </p>
-        </article>
-
-        <article class="service-card">
-          <div class="icon-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M16 11a4 4 0 1 0-8 0"/>
-              <path d="M3 21a7 7 0 0 1 18 0"/>
-              <path d="M17 11a4 4 0 1 0-2.5-7.2"/>
-              <path d="M21 21a7 7 0 0 0-4-6.3"/>
-            </svg>
-          </div>
-          <div class="service-en">FAMILY</div>
-          <h3 class="service-title">가족상담</h3>
-          <p class="service-text">
-            가족 간 갈등, 의사소통 문제, 부모-자녀 관계 등
-            가족 시스템 전체를 함께 바라봅니다.
-          </p>
-        </article>
-
-        <article class="service-card">
-          <div class="icon-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 21s-7-4.4-9.5-9A5.7 5.7 0 0 1 12 5.6 5.7 5.7 0 0 1 21.5 12C19 16.6 12 21 12 21Z"/>
-            </svg>
-          </div>
-          <div class="service-en">YOUTH</div>
-          <h3 class="service-title">청소년상담</h3>
-          <p class="service-text">
-            학교생활, 또래관계, 진로고민, 정서적 어려움을 겪는
-            청소년을 위한 전문 상담을 제공합니다.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Counselor -->
-  <section id="counselor" class="anchor">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">COUNSELOR</div>
-        <h2 class="title">상담사 소개</h2>
-        <div class="title-underline"></div>
-        <p class="sub">상담사별로 자주 받는 질문과 답변을 확인할 수 있습니다.</p>
-      </div>
-
-      <div class="counselor-grid">
-        <!-- 상담사 1 -->
-        <article class="counselor-card">
-          <header class="counselor-top">
-            <div>
-              <h3 class="counselor-name">홍길동 상담사</h3>
-              <div class="counselor-role">임상심리사 / 수석 상담사</div>
-            </div>
-            <span class="pill">개인 · 불안 · 우울</span>
-          </header>
-
-          <div class="counselor-about">
-            <div class="about-title">이런 상담사</div>
-            <p class="about-text">
-              문제를 ‘증상’이 아니라 ‘패턴’으로 보고, 원인을 정리한 뒤
-              현실에서 실행 가능한 선택지로 연결하는 상담을 지향합니다.
-            </p>
-
-            <ul class="about-list">
-              <li>막연한 불안이 “왜 반복되는지” 구조를 함께 정리합니다.</li>
-              <li>생각이 많아 멈추는 유형에게 “다음 한 걸음”을 설계합니다.</li>
-              <li>말로만 위로하지 않고, 삶에서 적용 가능한 방식으로 안내합니다.</li>
-            </ul>
-          </div>
-
-          <div class="counselor-faq">
-            <div class="faq-title">이런 질문에는 이렇게 답하는 상담사</div>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 병원은 가기 싫은데 상담이 필요한 건가요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  병원을 고려한다는 건 이미 불편함이 있다는 뜻일 가능성이 큽니다.
-                  그렇다면 ‘병원 vs 상담’이 아니라, 먼저 어떤 불편함인지 확인하고
-                  그 불편함을 줄이는 방법을 찾는 게 우선이에요.
-                </p>
-                <p>
-                  상담은 진단을 내리기보다, 현재 어려움을 정리하고 변화를 만들기 위한 선택지가 될 수 있습니다.
-                </p>
-              </div>
-            </details>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 상담을 받으면 뭐가 달라지나요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  “마음이 편해진다”만이 목표가 아닙니다. 반복되는 생각/행동의 고리를 파악하고,
-                  내가 선택할 수 있는 범위를 늘리는 게 핵심이에요.
-                  보통은 관계·습관·기준·회복 루틴이 함께 정리됩니다.
-                </p>
-              </div>
-            </details>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 말로 설명을 잘 못하는데도 가능할까요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  가능합니다. 말이 정리가 안 되는 건 흔한 상태입니다.
-                  질문을 통해 ‘상황-감정-생각-행동’을 순서대로 정리하면서
-                  자연스럽게 구조가 만들어지게 도와드려요.
-                </p>
-              </div>
-            </details>
-          </div>
-        </article>
-
-        <!-- 상담사 2 -->
-        <article class="counselor-card">
-          <header class="counselor-top">
-            <div>
-              <h3 class="counselor-name">김민지 상담사</h3>
-              <div class="counselor-role">상담심리사 / 가족·관계 상담</div>
-            </div>
-            <span class="pill">가족 · 관계 · 청소년</span>
-          </header>
-
-          <div class="counselor-about">
-            <div class="about-title">이런 상담사</div>
-            <p class="about-text">
-              관계에서 반복되는 갈등과 상처의 패턴을 다루며,
-              ‘내가 바꿀 수 있는 것’과 ‘내가 내려놓아야 하는 것’을 구분하는 데 집중합니다.
-            </p>
-
-            <ul class="about-list">
-              <li>가족/연인/직장 관계에서 갈등이 반복되는 이유를 찾습니다.</li>
-              <li>경계(boundary) 설정과 대화 방식의 현실적인 수정안을 제시합니다.</li>
-              <li>청소년의 정서·학업·관계 부담을 함께 정리합니다.</li>
-            </ul>
-          </div>
-
-          <div class="counselor-faq">
-            <div class="faq-title">이런 질문에는 이렇게 대답하는 상담사 입니다.</div>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 가족이 상담을 거부해요. 저 혼자 와도 의미가 있나요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  의미 있습니다. 가족상담은 ‘가족 모두가 와야만’ 시작되는 게 아닙니다.
-                  우선 내 반응 패턴과 경계를 정리하면, 관계의 흐름이 달라지는 경우가 많아요.
-                </p>
-              </div>
-            </details>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 상대가 바뀌지 않으면 관계는 결국 끝 아닌가요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  관계는 “상대가 바뀌어야만” 유지되는 구조가 아니에요.
-                  내가 반복하는 선택을 바꾸면 관계의 규칙이 바뀌고,
-                  그에 따라 지속/거리두기/정리 등 현실적인 결정을 더 명확하게 할 수 있습니다.
-                </p>
-              </div>
-            </details>
-
-            <details class="qa">
-              <summary><span class="qtext">Q. 아이가 말이 없고 방에만 있어요. 어떻게 해야 하나요?</span></summary>
-              <div class="qa-body">
-                <p>
-                  ‘대화 시도’보다 먼저 안전감을 회복하는 접근이 필요할 때가 많습니다.
-                  압박 없이 연결을 만드는 방식, 부모의 반응 패턴, 생활 리듬을 함께 점검해볼 수 있어요.
-                </p>
-              </div>
-            </details>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section id="reviews" class="anchor">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">REVIEWS</div>
-        <h2 class="title">상담 후기</h2>
-        <div class="title-underline"></div>
-      </div>
-
-      <div class="grid3">
-        <article class="review-card">
-          <p class="quote">
-            “처음에는 많이 망설였는데, 상담사 선생님이 너무 편안하게 대해주셔서
-            자연스럽게 이야기할 수 있었어요. 반복되던 문제가 단 몇 번의 상담으로
-            실마리를 찾을 수 있었습니다.”
-          </p>
-          <div class="review-meta">
-            <div class="review-badge">3</div>
-            <div>
-              <div class="review-who">30대 직장인</div>
-              <div class="review-what">개인상담</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="review-card">
-          <p class="quote">
-            “아이와의 관계가 많이 좋아졌어요. 제가 먼저 변해야 한다는 걸 알게 됐고,
-            구체적인 방법을 알려주셔서 생활에서 바로 적용할 수 있었습니다.”
-          </p>
-          <div class="review-meta">
-            <div class="review-badge">4</div>
-            <div>
-              <div class="review-who">40대 학부모</div>
-              <div class="review-what">가족상담</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="review-card">
-          <p class="quote">
-            “학교에서 많이 힘들었는데 선생님이 제 말을 끝까지 들어주셨어요.
-            이제는 친구들이랑 어떻게 지내야 할지 조금씩 알 것 같아요.”
-          </p>
-          <div class="review-meta">
-            <div class="review-badge">고</div>
-            <div>
-              <div class="review-who">고등학생</div>
-              <div class="review-what">청소년상담</div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Question -->
-  <section id="question" class="section contact">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">FREE Q&amp;A</div>
-        <h2 class="section-title">무료 질문</h2>
-        <p class="section-desc">
-          고민이나 걱정을 남겨주시면 무료로 답변을 드립니다.<br />
-          답변 내용에 따라, 필요 시 상담 예약 안내가 함께 포함될 수 있습니다.
-          <span style="opacity:.75;"><br>(상담이 불필요한 경우 예약 안내가 제외될 수 있어요.)</span>
-        </p>
-      </div>
-
-      <div class="contact-grid">
-        <!-- LEFT: 안내/주의사항 -->
-        <div class="card contact-info">
-          <h3 class="card-title">
-            <span class="badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 10v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M12 7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </span>
-            안내
-          </h3>
-
-          <ul class="info-list">
-            <li>
-              <span class="info-label">작성 항목</span>
-              <span class="info-value">이름 / 이메일 / 질문</span>
-            </li>
-            <li>
-              <span class="info-label">답변 방식</span>
-              <span class="info-value">작성하신 이메일로 회신</span>
-            </li>
-            <li>
-              <span class="info-label">소요 시간</span>
-              <span class="info-value">보통 1~3영업일 내</span>
-            </li>
-            <li>
-              <span class="info-label">주의</span>
-              <span class="info-value">
-                긴급한 위기 상황(자/타해 위험 등)에는 즉시 112/119 또는 1393(자살예방상담전화) 등
-                긴급 지원을 이용해주세요.
-              </span>
-            </li>
-          </ul>
-
-          <div class="note">
-            <strong>개인정보 안내</strong><br />
-            질문 답변을 위해 이메일을 사용하며, 목적 외로 이용하지 않습니다.
+      <!-- 상담사 1 : 원장 -->
+      <article class="counselor-card">
+        <div class="counselor-leftside">
+          <div style="width: 100%; aspect-ratio: 1/1; background: #eef2f0 url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400') center/cover; border-radius: 24px; margin-bottom: 25px;"></div>
+          <h3 class="counselor-name">김새순 원장</h3>
+          <span class="counselor-role">임상심리 전문가 / 상담심리학 박사</span>
+          <div style="margin-top: 10px;">
+            <span class="tag">성인상담</span><span class="tag">트라우마</span><span class="tag">자존감</span>
           </div>
         </div>
-
-        <!-- RIGHT: 무료 질문 폼 -->
-        <div class="card contact-form">
-          <h3 class="card-title">
-            <span class="badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M21 12a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.35-.2-3.42-.58L3 21l1.08-6.08A8.5 8.5 0 1 1 21 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 8.8h5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            질문 남기기
-          </h3>
-
-          <form id="freeQuestionForm">
-            <label class="field">
-              <span class="field-label">이름 *</span>
-              <input id="qName" name="name" type="text" placeholder="이름을 입력해주세요" required />
-            </label>
-
-            <label class="field">
-              <span class="field-label">이메일 *</span>
-              <input id="qEmail" name="email" type="email" placeholder="답변 받을 이메일을 입력해주세요" required />
-            </label>
-
-            <label class="field">
-              <span class="field-label">질문 *</span>
-              <textarea id="qMessage" name="question" rows="7" placeholder="고민/상황을 편하게 적어주세요" required></textarea>
-            </label>
-
-            <div class="form-actions">
-              <button type="submit" class="btn primary" id="submitBtn">질문 제출</button>
-              <a class="btn" href="#services">서비스 보기</a>
+        <div class="counselor-qna-wrap">
+          <div class="qna-item active">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 상담에서 가장 중요하게 생각하는 가치는?</button>
+            <div class="qna-content">
+              "안전함입니다. 무엇을 말해도 비난받지 않고 존중받는다는 확신이 들 때, 비로소 상처를 드러낼 용기가 생기기 때문입니다. 그 안전한 울타리를 지키는 것이 저의 첫 번째 사명입니다."
             </div>
-
-            <p class="helper" id="formStatus">
-              제출된 질문은 내부에서 확인 후 이메일로 답변드릴 예정입니다.
-            </p>
-
-            <div class="mini-cta">
-              <strong>TIP</strong> 질문은 “상황(언제부터/어떤 패턴)” + “현재 가장 힘든 점” + “원하는 변화”를 함께 적으면
-              답변의 정확도가 올라갑니다.
+          </div>
+          <div class="qna-item">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 힘든 시간을 보내는 분들에게 전하고픈 말은?</button>
+            <div class="qna-content">
+              "지금의 방황은 멈춘 것이 아니라 깊게 뿌리 내리는 과정입니다. 당신의 속도는 틀리지 않았습니다. 그 귀한 시간을 외롭지 않게 지키겠습니다."
             </div>
-          </form>
+          </div>
+          <div class="qna-item">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 주로 어떤 분들과 함께하시나요?</button>
+            <div class="qna-content">
+              "관계의 상처, 반복되는 자기비판, 삶의 방향을 잃은 분들과 주로 함께합니다. 스스로를 탓하며 오래 혼자 감당해온 분들이 이곳에서 조금 더 가벼워지셨으면 합니다."
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 상담사 2 : 선임 상담사 -->
+      <article class="counselor-card">
+        <div class="counselor-leftside">
+          <div style="width: 100%; aspect-ratio: 1/1; background: #eef2f0 url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400') center/cover; border-radius: 24px; margin-bottom: 25px;"></div>
+          <h3 class="counselor-name">이하람 상담사</h3>
+          <span class="counselor-role">상담심리 전문가 / 심리학 석사</span>
+          <div style="margin-top: 10px;">
+            <span class="tag">청소년</span><span class="tag">불안·우울</span><span class="tag">관계상담</span>
+          </div>
+        </div>
+        <div class="counselor-qna-wrap">
+          <div class="qna-item active">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 상담에서 가장 중요하게 생각하는 가치는?</button>
+            <div class="qna-content">
+              "진정한 경청입니다. 답을 드리기 전에 먼저 온전히 들어드리고 싶습니다. 말 속에 담긴 감정과 맥락을 함께 느끼며 '이해받고 있다'는 경험 자체가 이미 치유의 시작이라고 믿습니다."
+            </div>
+          </div>
+          <div class="qna-item">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 힘든 시간을 보내는 분들에게 전하고픈 말은?</button>
+            <div class="qna-content">
+              "힘들다고 느끼는 것 자체가 더 나은 삶을 바라는 마음의 증거입니다. 그 마음을 가볍게 여기지 않겠습니다. 천천히, 하지만 분명하게 함께 나아가겠습니다."
+            </div>
+          </div>
+          <div class="qna-item">
+            <button class="qna-btn" onclick="toggleQna(this)">Q. 주로 어떤 분들과 함께하시나요?</button>
+            <div class="qna-content">
+              "불안과 우울로 일상이 무거워진 분들, 또래 관계나 가족 안에서 상처받은 청소년과 청년들과 함께합니다. 예민함은 약점이 아니라 깊이 있는 감수성임을 함께 발견해 나갑니다."
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="promise" class="anchor" style="background-color: #fdfdfb;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">OUR PROMISE</span>
+        <h2 class="title">새순의 3가지 약속</h2>
+        <p class="sub">우리는 상담의 기술보다 한 사람의 존엄성을 먼저 생각합니다.</p>
+      </div>
+
+      <div class="promise-grid">
+        <div class="promise-card">
+          <div class="promise-img p-img-1"></div>
+          <div class="promise-content">
+            <span class="promise-num">01</span>
+            <h4>안전한 관계</h4>
+            <p>비난 없이, 왜곡 없이, 당신의 이야기가 있는 그대로 존중받는 안전한 울타리가 되어드리겠습니다. 어떤 이야기도 이곳에선 평온할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-img p-img-2"></div>
+          <div class="promise-content">
+            <span class="promise-num">02</span>
+            <h4>깊이 있는 이해</h4>
+            <p>눈앞의 문제를 빨리 해결하라고 재촉하지 않겠습니다. 증상 너머에 숨겨진 마음의 뿌리와 고통의 맥락을 섬세하게 탐색하여 본질적인 변화를 돕습니다.</p>
+          </div>
+        </div>
+        <div class="promise-card">
+          <div class="promise-img p-img-3"></div>
+          <div class="promise-content">
+            <span class="promise-num">03</span>
+            <h4>당신 안의 힘</h4>
+            <p>상담사는 답을 주는 사람이 아니라 당신 안의 답을 함께 찾는 사람입니다. 이미 내면에 존재하는 살아낼 자원과 힘을 스스로 깨닫도록 끝까지 동행하겠습니다.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="question" class="anchor">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <span class="eyebrow">FREE Q&A</span>
+      <h2 class="title">마음 나누기</h2>
+      <p class="sub">고민되는 마음을 편하게 남겨주세요. 원장님이 직접 답변해 드립니다.</p>
+      
+      <form style="margin-top: 50px; text-align: left;">
+        <div class="notice-box">
+          <strong style="display: block; margin-bottom: 10px; color: var(--green); font-size: 17px;">🌱 안내드립니다</strong>
+          <span>남겨주신 고민은 1~3일 내로 기재하신 이메일로 따뜻한 답변을 보내드립니다. 모든 내용은 상담 윤리에 따라 비밀이 엄수됩니다.</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <input type="text" placeholder="성함">
+          <input type="email" placeholder="답변받으실 이메일 주소">
+        </div>
+        <textarea placeholder="현재 겪고 계신 상황이나 느끼시는 감정을 자유롭게 적어주세요."></textarea>
+        
+        <button type="submit" class="btn" style="width:100%; background:var(--green); color:#fff; padding:20px; font-size: 17px;">마음 전하기</button>
+      </form>
     </div>
   </section>
 
   <footer>
-    © <span id="year"></span> 새순 심리상담 연구소 ·
-    <a href="#">개인정보처리방침</a> · <a href="#question">문의</a>
+    <div class="container">
+      <div class="logo" style="justify-content: center; margin-bottom: 25px; opacity: 0.8;">
+        <img src="./image/logo.png" alt="새순 심리상담 연구소 로고" style="width:22px; height:22px; object-fit:contain;" />
+        새순 심리상담 연구소
+      </div>
+      <p>원장 : 김새순 | 사업자번호 : 000-00-00000 | 예약제 운영</p>
+      <p>주소 : 서울특별시 OO구 OO동 새순빌딩 3층 | Tel : 02-1234-5678</p>
+      <p style="margin-top: 30px; opacity: 0.5; font-size: 13px;">© 2026 Saesun Counseling Institute. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
-    // footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // mobile nav toggle
-    const hamburgerBtn = document.getElementById("hamburger");
-    const mobileNav = document.getElementById("mobileNav");
-    hamburgerBtn?.addEventListener("click", () => {
-      mobileNav.classList.toggle("show");
-    });
-  </script>
-
-  <script>
-    (function () {
-      const form = document.getElementById("freeQuestionForm");
-      const statusEl = document.getElementById("formStatus");
-      const btn = document.getElementById("submitBtn");
-      if (!form) return;
-
-      // ✅ Apps Script Web App URL
-      const ACTION_URL =
-        "https://script.google.com/macros/s/AKfycbwPrOZe4yn18yqONt7MtNANnihlDvQk3sTC41NnhSSKd_nAtayCHSZt3M_6DHbBWMTT/exec";
-
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("qName").value.trim();
-        const email = document.getElementById("qEmail").value.trim();
-        const question = document.getElementById("qMessage").value.trim();
-
-        if (!name || !email || !question) {
-          statusEl.textContent = "이름/이메일/질문을 모두 입력해주세요.";
-          return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = "제출 중...";
-        statusEl.textContent = "접수 중입니다...";
-
-        try {
-          const body = new URLSearchParams();
-          body.append("name", name);
-          body.append("email", email);
-          body.append("question", question);
-
-          // ⚠️ Apps Script CORS 때문에 no-cors (응답 읽기 불가)
-          await fetch(ACTION_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-            body: body.toString(),
-          });
-
-          statusEl.textContent = "접수되었습니다. 1~3영업일 내 이메일로 답변드릴게요.";
-          form.reset();
-        } catch (err) {
-          console.error(err);
-          statusEl.textContent = "전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "질문 제출";
-        }
-      });
-    })();
+    function toggleQna(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.qna-item').forEach(el => el.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    }
   </script>
 
 </body>
 </html>
-
