@@ -33,7 +33,7 @@
       color: var(--text);
       background: var(--bg);
       line-height: 1.7;
-      word-break: keep-all; /* 모바일 가독성 향상 */
+      word-break: keep-all;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -111,7 +111,7 @@
     .title { font-family: "Noto Serif KR", serif; font-size: clamp(24px, 5vw, 36px); line-height: 1.4; font-weight: 600; }
     .sub { color: var(--muted); margin-top: 14px; font-size: 15px; }
 
-    /* ===== 1. Growth Journey (Mobile Optimized) ===== */
+    /* ===== 1. Growth Journey ===== */
     .journey {
       display: flex;
       flex-direction: column;
@@ -184,7 +184,13 @@
     /* ===== 4. Promise ===== */
     .promise-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     .promise-card { background: #fff; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); }
-    .promise-img { width: 100%; height: 180px; background-size: cover; background-position: center; }
+    .promise-img { width: 100%; height: 250px; background-size: cover; background-position: center; }
+    
+    /* 최종 수정된 한글 파일명 및 폴더 경로 반영 */
+    .p-img-1 { background-image: url('./image/안전한 관계.png'); }
+    .p-img-2 { background-image: url('./image/깊이 있는 이해.png'); }
+    .p-img-3 { background-image: url('./image/당신 안의 힘.png'); }
+
     .promise-content { padding: 25px; position: relative; }
     .promise-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--green); opacity: 0.1; position: absolute; top: 10px; right: 20px; font-weight: 700; }
     .promise-content h4 { font-family: "Noto Serif KR", serif; font-size: 18px; color: var(--green); margin-bottom: 10px; }
