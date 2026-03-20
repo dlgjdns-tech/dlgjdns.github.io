@@ -181,12 +181,27 @@
     .qna-content { max-height: 0; overflow: hidden; transition: 0.3s; font-size: 14px; color: var(--muted); }
     .qna-item.active .qna-content { max-height: 200px; padding-bottom: 15px; }
 
+    /* ===== NEW: News & Story Section ===== */
+    .news-story-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .activity-card, .letter-card { 
+      background: #fff; border-radius: 24px; padding: 32px; border: 1px solid var(--line);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column;
+    }
+    .tag-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .news-title { font-family: "Noto Serif KR", serif; font-size: 19px; line-height: 1.5; margin-bottom: 12px; color: var(--text); }
+    .news-text { font-size: 14px; color: var(--muted); margin-bottom: 24px; text-align: justify; font-weight: 300; }
+    .news-link { margin-top: auto; color: var(--green); font-weight: 700; font-size: 14px; text-decoration: underline; }
+    
+    .letter-intro { font-size: 13px; color: var(--green); background: var(--sage); padding: 16px; border-radius: 16px; margin-bottom: 16px; }
+    .letter-subject { font-family: "Noto Serif KR", serif; font-size: 18px; margin-bottom: 8px; }
+    .letter-preview { font-size: 14px; color: var(--muted); font-style: italic; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; }
+    .btn-more { background: none; border: none; color: var(--muted); font-size: 13px; text-decoration: underline; cursor: pointer; align-self: flex-start; }
+
     /* ===== 4. Promise ===== */
     .promise-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     .promise-card { background: #fff; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); }
     .promise-img { width: 100%; height: 250px; background-size: cover; background-position: center; }
     
-    /* 최종 수정된 한글 파일명 및 폴더 경로 반영 */
     .p-img-1 { background-image: url('./image/안전한 관계.png'); }
     .p-img-2 { background-image: url('./image/깊이 있는 이해.png'); }
     .p-img-3 { background-image: url('./image/당신 안의 힘.png'); }
@@ -202,12 +217,15 @@
 
     footer { padding: 50px 0; text-align: center; color: var(--muted); font-size: 13px; background: #fff; border-top: 1px solid var(--line); }
 
-    /* ===== Modal ===== */
+    /* ===== Modal & Letter Modal ===== */
     .modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
     .modal.open { display: flex; }
     .modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); }
     .modal-panel { position: relative; width: 100%; max-width: 400px; background: #fff; border-radius: 24px; padding: 30px 24px; text-align: center; }
     .modal-title { font-family: "Noto Serif KR", serif; font-size: 24px; color: var(--green); margin-bottom: 10px; }
+    
+    #letterModal .modal-panel { max-width: 600px; text-align: left; }
+    .letter-full-content { font-size: 15px; line-height: 1.8; color: #475569; white-space: pre-line; max-height: 60vh; overflow-y: auto; margin: 20px 0; padding-right: 10px; }
 
     /* ===== Desktop Adjustment ===== */
     @media (min-width: 901px) {
@@ -218,7 +236,7 @@
       .journey { flex-direction: row; justify-content: center; gap: 0; align-items: flex-start; }
       .connector { flex-direction: row; height: auto; margin-top: 70px; padding: 0 15px; }
       .connector .line-sm { width: 30px; height: 1px; }
-      .counselors-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .counselors-container, .news-story-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .promise-grid { grid-template-columns: repeat(3, 1fr); }
       .message-box { padding: 80px 60px; }
       .section-head { margin-bottom: 60px; }
@@ -235,6 +253,7 @@
       </a>
       <nav class="nav">
         <a href="#about" class="pc-only">철학과 여정</a>
+        <a href="#news-story" class="pc-only">활동기록</a>
         <button type="button" class="cta" onclick="openReservationModal()">예약</button>
       </nav>
     </div>
@@ -397,7 +416,48 @@
     </div>
   </section>
 
-  <section id="promise" class="anchor" style="background-color: #fdfdfb;">
+  <section id="news-story" class="anchor" style="background-color: #fdfdfb;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">NEWS & STORIES</span>
+        <h2 class="title">새순의 활동과 치유의 기록</h2>
+      </div>
+
+      <div class="news-story-grid">
+        <div class="activity-card">
+          <div class="tag-row">
+            <span class="tag">충청뉴스 ACTIVITY</span>
+            <span class="news-date">2024. 02. 18</span>
+          </div>
+          <h3 class="news-title">선문대 RISE 사업단, ‘온(溫)마음 회복 프로젝트’ 성황리 마무리</h3>
+          <p class="news-text">
+            선문대학교 RISE 사업단이 운영한 ‘온(溫):마음 회복 프로젝트’가 성공적으로 마무리되었습니다. 이번 프로젝트는 생계 부담과 사회적 고립 등으로 심리적 어려움을 겪는 지역 주민들의 정서 회복을 위해 기획되었으며, 지역 맞춤형 회복 프로그램으로 완성도를 높였습니다.
+          </p>
+          <a href="https://www.ccnnews.co.kr/news/articleView.html?idxno=396330" target="_blank" class="news-link">기사 전문 보기 →</a>
+        </div>
+
+        <div class="letter-card">
+          <div class="tag-row">
+            <span class="tag">COUNSELING STORY</span>
+          </div>
+          <div class="letter-intro">
+            가족을 돌보느라 자신을 잊어버렸던 내담자가 상담을 통해 비난과 죄책감을 내려놓고, 자신을 수용하게 된 실제 치유 기록입니다.
+          </div>
+          <div class="letter-body">
+            <h4 class="letter-subject">"ㅇㅇ이의 마음에게"</h4>
+            <p class="letter-preview">
+              오늘은 날이 너무 춥다. 칼바람을 가르며 회사 근처를 산책하고 돌아왔지. 
+              산책하는 시간은 그래도 생각이 복잡하지 않아서 좋은 것 같아.
+              돌아보니, 나는 너를 괴롭혀 왔던 것 같네...
+            </p>
+            <button type="button" class="btn-more" onclick="openLetterModal()">편지 전문 읽기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="promise" class="anchor">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">OUR PROMISE</span>
@@ -449,16 +509,43 @@
     </div>
   </div>
 
+  <div id="letterModal" class="modal">
+    <div class="modal-backdrop" onclick="closeLetterModal()"></div>
+    <div class="modal-panel">
+      <h3 class="modal-title" style="text-align: left; font-size: 20px;">ㅇㅇ이의 마음에게</h3>
+      <div class="letter-full-content">
+        오늘은 날이 너무 춥다. 칼바람을 가르며 회사 근처를 산책하고 돌아왔지. 산책하는 시간은 그래도 생각이 복잡하지 않아서 좋은 것 같아. 너도 좋아하는 시간이지?
+
+        돌아보니, 나는 너를 괴롭혀 왔던 것 같네. 양극단의 방식으로 말이야. 어떤 때는 남인 것마냥 방치해 두기도 했고, 어떤 때는 마구 채찍질하며 나약한 생각하지 말라며 몰아세우기도 했던 것 같아. 언제부터였을까? 내가 너를 못 본 척하고, 밖으로만 내 눈을 돌렸던 게. 지금은 그것이 너무 익숙해서 그런지 네가 어떤 상태인지 잘 모르겠어. 
+
+        상담을 받으면서 ‘그래서 ㅇㅇ씨의 마음은 어떤데요?’라는 질문이 가장 어려웠어. 네가 진짜 원하는 것, 너의 진짜 모습을 알아차리는 게 쉽지 않았어. 지금 이 순간에도 잘 모르겠어. 너를 잘 모르는 나의 모습을 마주하니, 네가 한없이 가여워지더라. 누구에게도 기대지 못하는 너를 나라도 꼭 안아줬어야 했는데, 그것은 이기적인 일이 아니었는데 말이야. 책임감, 겸손함, 어른스러움 같은 겉보기에 좋은 이름들로 포장하며 너를 돌보지 못했네. 너무 미안해. 
+
+        그럼에도 불구하고 잘 견뎌주고, 정말 힘들어서 더 이상 안 되겠다 느꼈을 때 내게 알려줘서 고마워. 늦었지만 지금이라도 너를 들여다볼 수 있는 기회를 줘서 고마워. 아직은 너를 좀 더 보살펴야겠다 다짐만 한 상태이지만 노력해서 너를 잘 아는 사람이 되어 볼게. 알아주는 것만으로도 너는 기뻐할 걸 잘 알아.
+
+        지금껏 오랜 시간 살아온 방식 때문에 다시 너를 멀리할 수도 있겠지만, 의식적으로 너를 떠올릴 거야. 네가 건강해야 나도 건강하고, 우리 가정이 건강해질 수 있을 테니. 너에게 마지막으로 이 말은 해주고 싶어. 지금까지 너무 잘해 왔어. 남들이 뭐라 하든 너는 네 상황에서 최선을 다하며 잘 이겨내 왔어. 때로는 나에게만 왜 이런 일이? 라는 생각으로 힘들어했지만, 원망보다는 소망을 선택하는 삶을 살았잖아. 오늘보다는 내일이 그래도 나아질 것이란 소망을 갖고 살았잖아. 앞으로는 너무 애쓰지 말자. 그저 주님께 맡기며 살아보자. 그리고 나랑 이야기도 많이 나누며 살자. 알았지? 아직 완전하지는 않지만, 너를 사랑해 보도록 할게! 안녕! 종종 편지할게!
+      </div>
+      <button class="btn solid-green" style="width: 100%; border-radius: 12px;" onclick="closeLetterModal()">닫기</button>
+    </div>
+  </div>
+
   <script>
+    // Q&A 토글 함수
     function toggleQnaSimple(btn) {
       const item = btn.parentElement;
       const isActive = item.classList.contains('active');
       item.parentElement.querySelectorAll('.qna-item').forEach(el => el.classList.remove('active'));
       if (!isActive) item.classList.add('active');
     }
-    const modal = document.getElementById('reservationModal');
-    function openReservationModal() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeReservationModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+
+    // 예약 모달 제어
+    const resModal = document.getElementById('reservationModal');
+    function openReservationModal() { resModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeReservationModal() { resModal.classList.remove('open'); document.body.style.overflow = ''; }
+
+    // 편지 모달 제어
+    const letModal = document.getElementById('letterModal');
+    function openLetterModal() { letModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLetterModal() { letModal.classList.remove('open'); document.body.style.overflow = ''; }
   </script>
 </body>
 </html>
